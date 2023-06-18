@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/icons8-calculator-80.png">
+    <link rel="manifest" href="manifest.json">
+    <script>
+        //if browser support service worker
+        if('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('sw.js');
+        };
+      </script>
+</head>
+<body>
+  <h1 style="text-align: center; color: blueviolet; font-family: Verdana, Geneva, Tahoma, sans-serif;">Simple Calculator</h1>
+    <div class="Calculator">
+        <div class="box" id="box" aria-readonly="true"></div>
+        <div class="operating">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="deleteone()"><img src="images/icons8-clear-symbol-50.png" style="width: 28px;"></button>
+            <button onclick="appendToDisplay('%')">%</button>
+            <button style="font-size: 16px;" onclick="carre()">x<sup>2</sup></button>
+            <button onclick="calculate()">=</button>
+        </div>
+        <div class="operating" style="top: 190px;">
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('+')">+</button>
+        </div>
+        <div class="operating" style="top: 260px;">
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('-')">-</button>
+        </div>
+        <div class="operating" style="top: 330px;">
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button style="font-size: 20px; background-color: rgb(119, 22, 194);
+                border-color: transparent;
+                border-radius: 12px;"
+                onclick="appendToDisplay('/')">&#247;</button>
+            <button onclick="appendToDisplay('*')">*</button>
+        </div>
+    </div>
+
+    <script>
+        function appendToDisplay(val) {
+            var idbox = document.getElementById('box');
+            idbox.innerHTML += val;
+        }
+        
+        function clearDisplay() {
+            var idbox = document.getElementById('box');
+            idbox.innerHTML = "";
+        }
+        
+        function calculate() {
+            var idbox = document.getElementById('box');
+            const result = eval(idbox.innerHTML); // Note: eval() can be unsafe in certain contexts. Be cautious when using it.
+            idbox.innerHTML = result;
+        }
+        function carre(){
+          var idbox = document.getElementById('box');
+          const valbox = idbox.innerHTML;
+          const newval = eval(`Math.pow(${valbox}, 2)`);
+          idbox.innerHTML = newval;
+
+        }
+        function deleteone(){
+          var idbox = document.getElementById('box');
+          var valbox = idbox.innerHTML;
+        
+// the last character will be removed
+valbox = valbox.slice(0, -1);
+idbox.innerHTML = valbox;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+body{
+    background-color: black
+}
+.Calculator{
+    background-color: rgb(255, 255, 255);
+    width: 350px;
+    height: 400px;
+    position: relative;
+    left: 35%;
+  margin-top: 80px;
+  border-radius: 12px;
+}
+.box{
+    width: 330px;
+    background-color: rgb(213, 227, 227);
+    height: 90px;
+    position: absolute;
+    top: 10px; /* Set the desired margin-top value */
+    left: 10px;
+border-radius: 12px;
+}
+.operating{
+     top: 120px;
+     position: absolute;
+     display: flex;
+     left:10px ;
+}
+.operating button{
+    width: 60px;
+    height: 60px;
+    margin-right: 5px;
+    border-radius:12px ;
+    font-size: 18px;
+    border-color: transparent;
+}
+.operating button:nth-child(5){
+    background-color: rgb(119, 22, 194);
+    border-color: transparent;
+    border-radius:12px ;
+}
+.box {
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    text-align: right;
+    
+
+}
